@@ -18,6 +18,9 @@ import { DepositRepositoryService } from './deposit/deposit.repository.service';
 import { DepositStationController } from './deposit-station/deposit-station.controller';
 import { DepositStationService } from './deposit-station/deposit-station.service';
 import { DepositStationRepositoryService } from './deposit-station/deposit-station.repository.service';
+import { TradeController } from './trade/trade.controller';
+import { TradeService } from './trade/trade.service';
+import { TradeRepositoryService } from './trade/trade.repository.service';
 
 @Module({
   imports: [
@@ -33,7 +36,8 @@ import { DepositStationRepositoryService } from './deposit-station/deposit-stati
     UserController,
     ItemController,
     DepositController,
-    DepositStationController
+    DepositStationController,
+    TradeController
   ],
   providers: [
     UserService,
@@ -44,13 +48,16 @@ import { DepositStationRepositoryService } from './deposit-station/deposit-stati
     DepositRepositoryService,
     UserTokenGateway,
     DepositStationService,
-    DepositStationRepositoryService
+    DepositStationRepositoryService,
+    TradeService,
+    TradeRepositoryService
   ],
   exports: [
     UserService,
     ItemService,
     DepositService,
-    DepositStationService
+    DepositStationService,
+    TradeService
   ]
 })
 export class BioCycleXModule {}

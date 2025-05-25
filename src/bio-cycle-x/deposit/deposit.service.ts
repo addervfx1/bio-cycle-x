@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { DepositRepositoryService } from './deposit.repository.service';
 import { Deposit } from './entities/deposit.entity';
-import { WasteCategory } from '../deposit-station/entities/deposit-station.entity';
+import { RecyclableMaterial } from '../deposit-station/entities/deposit-station.entity';
 import { CreateDepositDto } from './dto/create-deposit-dto';
 import { UpdateDepositDto } from './dto/update-deposit-dto';
 import { DepositStationRepositoryService } from '../deposit-station/deposit-station.repository.service';
@@ -39,13 +39,10 @@ export class DepositService {
     }
 
     const CATEGORY_POINTS: Record<string, number> = {
-      [WasteCategory.RECYCLABLE]: 2,
-      [WasteCategory.ORGANIC]: 1,
-      [WasteCategory.ELECTRONIC]: 5,
-      [WasteCategory.BATTERY]: 8,
-      [WasteCategory.MEDICATION]: 6,
-      [WasteCategory.OIL]: 4,
-      [WasteCategory.OTHER]: 1,
+      [RecyclableMaterial.PAPER]: 2,
+      [RecyclableMaterial.PLASTIC]: 2,
+      [RecyclableMaterial.METAL]: 3,
+      [RecyclableMaterial.GLASS]: 2
     };
 
     const multiplier = CATEGORY_POINTS[String(createDepositDto.category)] ?? 1;

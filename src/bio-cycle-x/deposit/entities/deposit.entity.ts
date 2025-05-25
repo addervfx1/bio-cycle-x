@@ -1,4 +1,4 @@
-import { WasteCategory, DepositStation } from "src/bio-cycle-x/deposit-station/entities/deposit-station.entity";
+import { RecyclableMaterial, DepositStation } from "src/bio-cycle-x/deposit-station/entities/deposit-station.entity";
 import { User } from "src/bio-cycle-x/user/entities/user.entity";
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
 
@@ -11,8 +11,8 @@ export class Deposit {
   @Column({ type: 'text', nullable: true })
   description: string;
 
-  @Column({ type: 'enum', enum: WasteCategory })
-  category: WasteCategory;
+  @Column({ type: 'enum', enum: RecyclableMaterial })
+  category: RecyclableMaterial;
 
   @Column({ type: 'decimal', precision: 5, scale: 2 })
   weightInKg: number;

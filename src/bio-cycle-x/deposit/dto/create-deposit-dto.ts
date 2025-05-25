@@ -1,13 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { WasteCategory } from '../../deposit-station/entities/deposit-station.entity';
+import { RecyclableMaterial } from '../../deposit-station/entities/deposit-station.entity';
 
 
 export class CreateDepositDto {
   @ApiProperty({ required: false })
   description?: string;
 
-  @ApiProperty({ enum: WasteCategory })
-  category: WasteCategory;
+  @ApiProperty({ enum: RecyclableMaterial })
+  category: RecyclableMaterial;
 
   @ApiProperty()
   weightInKg: number;

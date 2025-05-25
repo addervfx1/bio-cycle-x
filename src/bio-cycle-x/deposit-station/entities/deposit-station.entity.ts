@@ -1,14 +1,11 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { Deposit } from '../../deposit/entities/deposit.entity';
 
-export enum WasteCategory {
-  RECYCLABLE = 'Reciclável',
-  ORGANIC = 'Orgânico',
-  ELECTRONIC = 'Eletrônico',
-  BATTERY = 'Bateria',
-  MEDICATION = 'Medicamento',
-  OIL = 'Óleo',
-  OTHER = 'Outro',
+export enum RecyclableMaterial {
+  PAPER = 'Papel',
+  PLASTIC = 'Plástico',
+  METAL = 'Metal',
+  GLASS = 'Vidro',
 }
 
 @Entity('depositStation')
@@ -28,8 +25,8 @@ export class DepositStation {
   @Column({ type: 'double precision' })
   longitude: number;
 
-  @Column({ type: 'enum', enum: WasteCategory })
-  category: WasteCategory;
+  @Column({ type: 'enum', enum: RecyclableMaterial })
+  category: RecyclableMaterial;
 
   @Column({ type: 'boolean', default: true })
   status: boolean;
