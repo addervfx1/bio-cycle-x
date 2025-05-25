@@ -1,7 +1,18 @@
-import { PartialType } from "@nestjs/mapped-types";
-import { Item } from "../entities/item.entity";
+import { ApiProperty } from '@nestjs/swagger';
 
+export class CreateItemDto {
+  @ApiProperty()
+  name: string;
 
-export class CreateItemDto extends PartialType(Item) {
+  @ApiProperty({ required: false })
+  description?: string;
 
+  @ApiProperty()
+  price: number;
+
+  @ApiProperty()
+  stock: number;
+
+  @ApiProperty({ default: true })
+  tradeEnabled?: boolean;
 }

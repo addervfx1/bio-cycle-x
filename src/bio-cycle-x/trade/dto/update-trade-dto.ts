@@ -1,7 +1,7 @@
-import { PartialType } from "@nestjs/mapped-types";
-import { Trade } from "../entities/trade.entity";
+import { ApiProperty, PartialType } from '@nestjs/swagger';
+import { CreateTradeDto } from './create-trade-dto';
 
 
-export class UpdateTradeDto extends PartialType(Trade) {
+export class UpdateTradeDto extends PartialType(CreateTradeDto) {
 
 }

@@ -57,10 +57,9 @@ export class TradeService {
     item.stock -= quantity;
     await this.userRepositoryService.update(user.id, user);
     await this.itemRepositoryService.update(item.id, item);
-    const trade = this.tradeRepositoryService.create({
-      ...createTradeDto,
-      users: user,
-      item,
+    const trade = await this.tradeRepositoryService.create({
+      userId: user.id,
+      itemId: item.id,
       quantity,
     });
     return trade;

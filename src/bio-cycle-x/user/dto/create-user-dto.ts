@@ -1,7 +1,12 @@
-import { PartialType } from "@nestjs/mapped-types";
-import { User } from "../entities/user.entity";
+import { ApiProperty } from '@nestjs/swagger';
 
+export class CreateUserDto {
+  @ApiProperty()
+  name: string;
 
-export class CreateUserDto extends PartialType(User) {
+  @ApiProperty()
+  email: string;
 
+  @ApiProperty()
+  password: string;
 }

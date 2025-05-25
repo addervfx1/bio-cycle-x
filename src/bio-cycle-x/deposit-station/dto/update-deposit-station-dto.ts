@@ -1,7 +1,7 @@
-import { PartialType } from "@nestjs/mapped-types";
-import { DepositStation } from "../entities/deposit-station.entity";
+import { ApiProperty, PartialType } from '@nestjs/swagger';
+import { CreateDepositStationDto } from './create-deposit-station-dto';
 
 
-export class UpdateDepositStationDto extends PartialType(DepositStation) {
+export class UpdateDepositStationDto extends PartialType(CreateDepositStationDto) {
 
 }

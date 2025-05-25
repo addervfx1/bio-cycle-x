@@ -1,9 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { PartialType } from "@nestjs/mapped-types";
-import { Trade } from "../entities/trade.entity";
 
-
-export class CreateTradeDto extends PartialType(Trade) {
+export class CreateTradeDto {
   @ApiProperty({ example: 1 })
   userId: number;
 
@@ -12,6 +9,4 @@ export class CreateTradeDto extends PartialType(Trade) {
 
   @ApiProperty({ example: 2, required: false })
   quantity?: number;
-
-  // Adicione outros campos e anotações conforme necessário
 }

@@ -52,13 +52,13 @@ export class DepositService {
     const weight = createDepositDto.weightInKg ?? 0;
     const pointsEarned = Math.floor(weight * multiplier);
 
-    const deposit = this.depositRepositoryService.create({
+    const deposit = await this.depositRepositoryService.create({
       description: createDepositDto.description,
       category: createDepositDto.category,
       weightInKg: weight,
       status: true,
-      users: user,
-      depositStation,
+      userId: user.id,
+      depositStationId: depositStation.id
     });
 
     user.score = (user.score ?? 0) + pointsEarned;

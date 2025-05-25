@@ -22,10 +22,10 @@ export class DepositStation {
   @Column({ type: 'text', nullable: true })
   description: string;
 
-  @Column({ type: 'int', precision: 9, scale: 6 })
+  @Column({ type: 'double precision' })
   latitude: number;
 
-  @Column({ type: 'int', precision: 9, scale: 6 })
+  @Column({ type: 'double precision' })
   longitude: number;
 
   @Column({ type: 'enum', enum: WasteCategory })

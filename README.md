@@ -21,6 +21,112 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+# Bio-Cycle-X API
+
+API desenvolvida em NestJS para projeto na faculdade UNIFG onde consiste em um: 
+Gerenciamento de usuários, depósitos de lixo reciclável, trocas (trades) por itens, itens e estações de depósito.
+
+## Pré-requisitos
+
+- [Node.js (v18+)](https://nodejs.org/)
+- [npm (v9+)](https://www.npmjs.com/get-npm)
+- [Docker](https://www.docker.com/products/docker-desktop/)
+- [PostgreSQL (SGBD) - Download oficial](https://www.postgresql.org/download/)
+  - Alternativamente, você pode usar a extensão [PostgreSQL para VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-postgresql) para gerenciar o banco de dados diretamente pelo editor:
+    1. Abra o VS Code
+    2. Vá em "Extensões" (Ctrl+Shift+X)
+    3. Busque por "PostgreSQL"
+    4. Instale a extensão oficial da Microsoft
+
+## Como rodar o projeto
+
+1. **Clone o repositório:**
+   ```bash
+   git clone <url-do-repositorio>
+   cd bio-cycle-x
+   ```
+
+2. **Suba o banco de dados digitando o seguinte comando no seu terminal:**
+   ```bash
+   docker compose up -d
+   ```
+   Isso irá criar um container Postgres acessível em `localhost:25060` com usuário `admin` e senha `admin`.
+
+3. **Instale as dependências:**
+   ```bash
+   npm install
+   ```
+5. **Rode a aplicação:**
+   ```bash
+   npm run start:dev
+   ```
+
+6. **Acesse a documentação Swagger onde exibirá a documentação para cada rota:**
+   - [http://localhost:3000/api](http://localhost:3000/api)
+
+---
+
+## Principais Rotas
+
+### Usuário
+- `POST /users/register` — Cria um novo usuário
+  - Body: `{ "name": string, "email": string, "password": string }`
+- `POST /users/login` — Login do usuário
+  - Body: `{ "email": string, "password": string }`
+- `GET /users/:id` — Busca usuário por ID
+- `PUT /users/:id` — Atualiza usuário
+- `DELETE /users/:id` — Remove usuário
+
+### Depósito
+- `POST /deposit` — Cria um depósito
+- `POST /deposit/make` — Realiza um depósito e soma pontos ao usuário
+  - Body: `{ "userId": number, "depositStationId": number, "category": string, "weightInKg": number, ... }`
+- `GET /deposit/usuario/:userId` — Lista depósitos de um usuário
+
+### Trade
+- `POST /trade` — Cria uma trade
+- `POST /trade/make` — Realiza uma trade (subtrai score e estoque)
+  - Body: `{ "userId": number, "itemId": number, "quantity": number }`
+- `GET /trade/usuario/:userId` — Lista trades de um usuário
+
+### Item
+- `POST /item` — Cria um item
+- `GET /item/:id` — Busca item por ID
+- `PUT /item/:id` — Atualiza item
+- `DELETE /item/:id` — Remove item
+
+### Estação de Depósito
+- `POST /deposit-station` — Cria uma estação
+- `GET /deposit-station/:id` — Busca estação por ID
+- `PUT /deposit-station/:id` — Atualiza estação
+- `DELETE /deposit-station/:id` — Remove estação
+
+---
+
+## Exemplo de dados iniciais (script SQL)
+
+Você pode popular o banco de dados com alguns itens para troca e pontos de coleta em Recife executando o script abaixo no pgAdmin, na extensão PostgreSQL do VS Code ou outro cliente conectado ao banco:
+
+```sql
+INSERT INTO item (name, description, price, stock, tradeEnabled) VALUES
+  ('Copo Térmico BioCycle', 'Copo térmico ecológico, 350ml', 120, 50, true),
+  ('Squeeze Reutilizável', 'Garrafa squeeze 500ml, livre de BPA', 90, 40, true),
+  ('Ecobag BioCycle', 'Sacola ecológica resistente', 60, 100, true),
+  ('Kit Canudo Inox', 'Kit com 2 canudos de inox + escova', 80, 30, true),
+  ('Camiseta BioCycle', 'Camiseta sustentável, algodão orgânico', 150, 20, true);
+
+INSERT INTO deposit_station (name, address, description, latitude, longitude, category, status) VALUES
+  ('Estação Boa Viagem - Plástico', 'Av. Boa Viagem, 1000, Recife', 'Coleta de plásticos', -8.1192, -34.8941, 'Reciclável', true),
+  ('Estação Derby - Papel', 'Praça do Derby, 200, Recife', 'Coleta de papel', -8.0586, -34.8942, 'Reciclável', true),
+  ('Estação Casa Forte - Vidro', 'Rua Casa Forte, 300, Recife', 'Coleta de vidro', -8.0277, -34.9076, 'Reciclável', true),
+  ('Estação Pina - Metal', 'Av. Herculano Bandeira, 400, Recife', 'Coleta de metais', -8.1041, -34.8813, 'Reciclável', true),
+  ('Estação Recife Antigo - Eletrônicos', 'Rua do Bom Jesus, 500, Recife', 'Coleta de eletrônicos', -8.0632, -34.8711, 'Eletrônico', true);
+```
+
+> Basta copiar e colar o script acima em seu gerenciador de banco de dados conectado ao Postgres do projeto.
+
+---
+
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.

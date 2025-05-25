@@ -4,6 +4,7 @@ import { User } from './user/entities/user.entity';
 import { Item } from './item/entities/item.entity';
 import { Deposit } from './deposit/entities/deposit.entity';
 import { DepositStation } from './deposit-station/entities/deposit-station.entity';
+import { Trade } from './trade/entities/trade.entity';
 import { UserController } from './user/user.controller';
 import { UserService } from './user/user.service';
 import { UserRepositoryService } from './user/user.repository.service';
@@ -24,7 +25,8 @@ import { DepositStationRepositoryService } from './deposit-station/deposit-stati
       User,
       Item,
       Deposit,
-      DepositStation
+      DepositStation,
+      Trade
     ])
   ],
   controllers: [
