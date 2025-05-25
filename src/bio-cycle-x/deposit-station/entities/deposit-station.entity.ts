@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { ApiProperty } from '@nestjs/swagger';
 import { Deposit } from '../../deposit/entities/deposit.entity';
 
 export enum RecyclableMaterial {
@@ -26,6 +27,7 @@ export class DepositStation {
   @Column({ type: 'double precision' })
   longitude: number;
 
+  @ApiProperty({ enum: RecyclableMaterial })
   @Column({ type: 'enum', enum: RecyclableMaterial })
   category: RecyclableMaterial;
 
