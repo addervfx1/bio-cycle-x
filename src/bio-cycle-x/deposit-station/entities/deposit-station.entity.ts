@@ -6,6 +6,7 @@ export enum RecyclableMaterial {
   PLASTIC = 'Plástico',
   METAL = 'Metal',
   GLASS = 'Vidro',
+  TODOS = 'Todos',
 }
 
 @Entity('depositStation')
