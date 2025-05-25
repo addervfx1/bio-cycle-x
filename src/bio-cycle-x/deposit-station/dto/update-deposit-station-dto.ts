@@ -1,9 +1,7 @@
 import { ApiProperty, PartialType } from '@nestjs/swagger';
 import { CreateDepositStationDto } from './create-deposit-station-dto';
-import { RecyclableMaterial } from '../entities/deposit-station.entity';
+import { DepositStationMaterial } from '../../common/enums/deposit-station-material.enum';
 
 
 export class UpdateDepositStationDto extends PartialType(CreateDepositStationDto) {
-    @ApiProperty({ type: () => [RecyclableMaterial], nullable: true })
-    recyclableMaterials?: RecyclableMaterial[];
 }

@@ -1,6 +1,7 @@
-import { RecyclableMaterial, DepositStation } from "src/bio-cycle-x/deposit-station/entities/deposit-station.entity";
+import { DepositStation } from "src/bio-cycle-x/deposit-station/entities/deposit-station.entity";
 import { User } from "src/bio-cycle-x/user/entities/user.entity";
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
+import { RecyclableMaterial } from "src/bio-cycle-x/common/enums/recyclable-material.enum";
 
 
 @Entity('deposit')

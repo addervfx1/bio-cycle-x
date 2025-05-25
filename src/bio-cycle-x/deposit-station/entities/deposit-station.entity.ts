@@ -1,14 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { ApiProperty } from '@nestjs/swagger';
 import { Deposit } from '../../deposit/entities/deposit.entity';
-
-export enum RecyclableMaterial {
-  PAPER = 'Papel',
-  PLASTIC = 'Plástico',
-  METAL = 'Metal',
-  GLASS = 'Vidro',
-  TODOS = 'Todos',
-}
+import { DepositStationMaterial } from '../../common/enums/deposit-station-material.enum';
 
 @Entity('depositStation')
 export class DepositStation {
@@ -27,13 +19,12 @@ export class DepositStation {
   @Column({ type: 'double precision' })
   longitude: number;
 
-  @ApiProperty({ enum: RecyclableMaterial })
-  @Column({ type: 'enum', enum: RecyclableMaterial })
-  category: RecyclableMaterial;
+  @Column({ type: 'enum', enum: DepositStationMaterial })
+  category: DepositStationMaterial;
 
   @Column({ type: 'boolean', default: true })
   status: boolean;
 
-  @OneToMany(() => Deposit, deposit => deposit.depositStation)
+  @OneToMany(() => Deposit, (deposit) => deposit.depositStation)
   deposits: Deposit[];
 }

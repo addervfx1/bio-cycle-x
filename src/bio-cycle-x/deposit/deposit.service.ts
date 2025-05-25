@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { DepositRepositoryService } from './deposit.repository.service';
 import { Deposit } from './entities/deposit.entity';
-import { RecyclableMaterial } from '../deposit-station/entities/deposit-station.entity';
+import { RecyclableMaterial } from '../common/enums/recyclable-material.enum';
 import { CreateDepositDto } from './dto/create-deposit-dto';
 import { UpdateDepositDto } from './dto/update-deposit-dto';
 import { DepositStationRepositoryService } from '../deposit-station/deposit-station.repository.service';

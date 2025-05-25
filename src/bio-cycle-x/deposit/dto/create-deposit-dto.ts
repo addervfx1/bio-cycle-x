@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { RecyclableMaterial } from '../../deposit-station/entities/deposit-station.entity';
+import { RecyclableMaterial } from '../../common/enums/recyclable-material.enum';
 
 
 export class CreateDepositDto {
