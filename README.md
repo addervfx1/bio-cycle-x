@@ -32,7 +32,7 @@ Gerenciamento de usuários, depósitos de lixo reciclável, trocas (trades) por 
 - [npm (v9+)](https://www.npmjs.com/get-npm)
 - [Docker](https://www.docker.com/products/docker-desktop/)
 - [PostgreSQL (SGBD) - Download oficial](https://www.postgresql.org/download/)
-  - Alternativamente, você pode usar a extensão [PostgreSQL para VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-postgresql) para gerenciar o banco de dados diretamente pelo editor:
+  - Ou você pode usar a extensão [PostgreSQL para VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-postgresql) para gerenciar o banco de dados diretamente pelo editor:
     1. Abra o VS Code
     2. Vá em "Extensões" (Ctrl+Shift+X)
     3. Busque por "PostgreSQL"
@@ -105,8 +105,6 @@ Gerenciamento de usuários, depósitos de lixo reciclável, trocas (trades) por 
 
 ## Exemplo de dados iniciais (script SQL)
 
-Você pode popular o banco de dados com alguns itens para troca e pontos de coleta em Recife executando o script abaixo no pgAdmin, na extensão PostgreSQL do VS Code ou outro cliente conectado ao banco:
-
 ```sql
 INSERT INTO item (name, description, price, stock, tradeEnabled) VALUES
   ('Copo Térmico BioCycle', 'Copo térmico ecológico, 350ml', 120, 50, true),
@@ -122,9 +120,6 @@ INSERT INTO deposit_station (name, address, description, latitude, longitude, ca
   ('Estação Pina - Metal', 'Av. Herculano Bandeira, 400, Recife', 'Coleta de metais', -8.1041, -34.8813, 'Reciclável', true),
   ('Estação Recife Antigo - Eletrônicos', 'Rua do Bom Jesus, 500, Recife', 'Coleta de eletrônicos', -8.0632, -34.8711, 'Eletrônico', true);
 ```
-
-> Basta copiar e colar o script acima em seu gerenciador de banco de dados conectado ao Postgres do projeto.
-
 ## Resources
 
 Check out a few resources that may come in handy when working with NestJS:
