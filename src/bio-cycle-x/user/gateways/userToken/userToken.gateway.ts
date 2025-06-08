@@ -58,8 +58,6 @@ export class UserTokenGateway {
 
     private getRefreshToken(refreshToken: string) {
         try {
-            // const decodedToken = decode(refreshToken, { complete: true });
-            // const payload = decodedToken.payload as RefreshToken;
             const token = verify(refreshToken, ConfigHelper.getRefreshTokenSecret()) as RefreshToken;
             if (!token)
                 throw new UnauthorizedException();

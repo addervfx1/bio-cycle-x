@@ -33,8 +33,7 @@ export class TradeRepositoryService {
   async remove(id: number): Promise<void> {
     await this.tradeRepository.delete(id);
   }
-
   async findByUsuario(userId: number): Promise<Trade[] | null> {
-    return await this.tradeRepository.find({ where: { users: { id: userId } }, relations: ['users'] });
+    return await this.tradeRepository.find({ where: { users: { id: userId } }, relations: ['users', 'item'] });
   }
 }

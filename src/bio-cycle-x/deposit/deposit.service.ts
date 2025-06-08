@@ -42,7 +42,8 @@ export class DepositService {
       [RecyclableMaterial.PAPER]: 2,
       [RecyclableMaterial.PLASTIC]: 2,
       [RecyclableMaterial.METAL]: 3,
-      [RecyclableMaterial.GLASS]: 2
+      [RecyclableMaterial.GLASS]: 2,
+      [RecyclableMaterial.ORGANIC]: 1
     };
 
     const multiplier = CATEGORY_POINTS[String(createDepositDto.category)] ?? 1;

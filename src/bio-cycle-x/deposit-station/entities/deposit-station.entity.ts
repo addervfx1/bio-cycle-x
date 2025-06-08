@@ -25,6 +25,9 @@ export class DepositStation {
   @Column({ type: 'boolean', default: true })
   status: boolean;
 
+  @Column({ type: 'varchar', length: 255, nullable: true })
+  address: string;
+
   @OneToMany(() => Deposit, (deposit) => deposit.depositStation)
   deposits: Deposit[];
 }

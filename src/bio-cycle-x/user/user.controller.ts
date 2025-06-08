@@ -5,6 +5,7 @@ import { CreateUserDto } from './dto/create-user-dto';
 import { UpdateUserDto } from './dto/update-user-dto';
 import { LoginDto } from './dto/login-dto';
 import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBody } from '@nestjs/swagger';
+import { UserRole } from './entities/user.entity';
 
 @ApiTags('users')
 @Controller('users')
@@ -58,5 +59,14 @@ export class UserController {
   @ApiResponse({ status: 204, description: 'Usuário removido com sucesso.' })
   async remove(@Param('id') id: number): Promise<void> {
     return await this.userService.remove(id);
+  }
+
+  @Post('/register-admin')
+  @ApiOperation({ summary: 'Registra um novo administrador' })
+  @ApiBody({ type: CreateUserDto })
+  @ApiResponse({ status: 201, description: 'Administrador registrado com sucesso.' })
+  async registerAdmin(@Body() createUserDto: CreateUserDto): Promise<{accessToken: string, refreshToken: string} | null> {
+    createUserDto.role = UserRole.ADMIN;
+    return await this.userService.create(createUserDto);
   }
 }

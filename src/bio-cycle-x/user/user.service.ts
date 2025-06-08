@@ -7,6 +7,7 @@ import UserBuilder from './builder/user.builder';
 import { UserTokenGateway } from './gateways/userToken/userToken.gateway';
 import { LoginDto } from './dto/login-dto';
 import SecurityHelper from './helpers/SecurityHelper';
+import { UserRole } from './entities/user.entity';
 
 @Injectable()
 export class UserService {
@@ -34,11 +35,17 @@ export class UserService {
         throw new ConflictException();
     }
 
+    let role = user.role;
+    if (!role || (role !== UserRole.ADMIN && role !== UserRole.USER)) {
+      role = UserRole.USER;
+    }
+
     const userObj = await this.userRepositoryService.create(
         UserBuilder.buildUser(
           user.name, 
           user.email, 
-          user.password
+          user.password,
+          role
         )
     );
 
